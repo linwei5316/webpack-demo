@@ -1,0 +1,14 @@
+.container {
+  h1 {
+    font-size: 50px;
+    color: #38f;
+    box-shadow: 0 0 0 #000;
+  }
+}
+
+#box {
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  background-image: url('~cat.jpg');
+}
