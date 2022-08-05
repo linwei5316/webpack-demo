@@ -39,6 +39,7 @@ const config = {
   },
   resolve: {
     modules: [
+      'node_modules',
       path.resolve('src'),
       path.resolve('src/js'),
       path.resolve('src/images'),
