@@ -2,12 +2,13 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin('css/[name]-bundle.css')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 console.log('環境變數 NODE_ENV: ', process.env.NODE_ENV)
 console.log('resolve(dirname): ', path.resolve(__dirname, 'src'))
 console.log('resolve: ', path.resolve('src'))
 
-module.exports = {
+const config = {
   mode: process.env.NODE_ENV,
   context: path.resolve(__dirname, './src'),
   entry: {
@@ -120,6 +121,12 @@ module.exports = {
     ]
   },
   plugins: [
-    extractCSS
+    extractCSS,
   ]
+};
+
+if (process.env.ANALYZE === 'true') {
+  config.plugins.push(new BundleAnalyzerPlugin());
 }
+
+module.exports = config;
